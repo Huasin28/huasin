@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ХУАСИН – Восточный магазин мебели и товаров для дома</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E31937; /* Китайский красный */
+            --secondary: #FFD700; /* Золотой */
+            --dark: #1A1A1A; /* Черный */
+            --accent: #0A2240; /* Темно-синий */
+            --light: #FFFFFF;
+        }
+        body {
+            font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--light);
+            color: var(--dark);
+        }
+        header {
+            background: var(--primary);
+            color: var(--light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 80px;
+        }
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,5 C75,10 25,10 0,5 Z" fill="%231A1A1A"/></svg>') repeat-x;
+            background-size: 100px 10px;
+        }
+        
+        /* Китайские шары */
+        .chinese-lanterns {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .lantern {
+            width: 40px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50% 50% 5px 5px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            animation: swing 3s infinite alternate ease-in-out;
+        }
+        .lantern:nth-child(2n) {
+            animation-delay: 0.5s;
+        }
+        .lantern:nth-child(3n) {
+            animation-delay: 1s;
+        }
+        .lantern::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            width: 10px;
+            height: 10px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+        .lantern::after {
+            content: "福";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--secondary);
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        @keyframes swing {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+        
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Главный баннер */
+        .main-banner {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+        .main-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            width: 100%;
+            padding: 0 20px;
+            z-index: 2;
+        }
+        .banner-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 5em;
+            color: var(--secondary);
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .banner-content h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        .banner-content p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .banner-btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .banner-btn:hover {
+            background: #ffc800;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+        
+        /* О нас */
+        .about-section {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-text h2 {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* Преимущества */
+        .features-section {
+            background: linear-gradient(135deg, var(--accent), var(--dark));
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 50px;
+        }
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .features-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-icon {
+            font-size: 3em;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        .feature-card p {
+            line-height: 1.6;
+        }
+        
+        /* Социальные сети и Авито */
+        .social-section {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .social-section h2 {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .social-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        .social-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .social-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .social-card.vk { color: #4680C2; }
+        .social-card.whatsapp { color: #25D366; }
+        .social-card.telegram { color: #0088CC; }
+        .social-card.avito { color: #FF5C00; }
+        .social-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .social-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .social-btn:hover {
+            background: #C0102C;
+        }
+        
+        /* Контакты */
+        .contacts-section {
+            background: #f9f9f9;
+            padding: 60px 0;
+        }
+        .contacts-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 50px;
+        }
+        .contacts-info {
+            flex: 1;
+        }
+        .contacts-info h2 {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .contact-icon {
+            font-size: 1.5em;
+            color: var(--primary);
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        .map-container {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* ИИ ассистент */
+        .ai-assistant {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        .ai-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .ai-btn:hover {
+            transform: scale(1.1);
+            background: #C0102C;
+        }
+        .ai-chat {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 300px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: none;
+        }
+        .ai-chat-header {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ai-chat-body {
+            height: 300px;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        .ai-chat-footer {
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        .ai-chat-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .ai-message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+        .ai-message.bot {
+            background: #f0f0f0;
+            margin-right: auto;
+        }
+        .ai-message.user {
+            background: var(--primary);
+            color: white;
+            margin-left: auto;
+        }
+        
+        /* Языковой переключатель в футере */
+        .footer-language-switcher {
+            margin: 20px auto;
+            max-width: 200px;
+            position: relative;
+        }
+        .footer-language-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--secondary);
+            color: var(--light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        .footer-language-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+        .footer-language-btn::after {
+            content: "▼";
+            font-size: 10px;
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        .footer-language-btn.active::after {
+            transform: rotate(180deg);
+        }
+        .footer-language-dropdown {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: var(--dark);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+            border-radius: 8px 8px 0 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 1000;
+            border: 1px solid var(--secondary);
+            border-bottom: none;
+        }
+        .footer-language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .footer-language-option {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        .footer-language-option:last-child {
+            border-bottom: none;
+        }
+        .footer-language-option:hover {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--secondary);
+        }
+        .footer-language-option img {
+            width: 20px;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 50px 20px 30px;
+            text-align: center;
+            position: relative;
+        }
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 15" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,10 C75,15 25,15 0,10 Z" fill="%23E31937"/></svg>') repeat-x;
+            background-size: 100px 15px;
+        }
+        .social-icons {
+            margin: 20px 0;
+        }
+        .social-icons a {
+            color: var(--light);
+            margin: 0 10px;
+            font-size: 20px;
+        }
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-wrap: wrap;
+                padding: 10px;
+            }
+            
+            .banner-logo {
+                font-size: 3em;
+            }
+            
+            .main-banner {
+                height: 400px;
+            }
+            .banner-content h1 {
+                font-size: 2.5em;
+            }
+            .banner-content p {
+                font-size: 1.2em;
+            }
+            
+            .about-section {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contacts-container {
+                flex-direction: column;
+            }
+            
+            .footer-language-btn span {
+                display: none;
+            }
+            .footer-language-btn::after {
+                display: none;
+            }
+            .footer-language-btn img {
+                margin-right: 0;
+            }
+            
+            .ai-assistant {
+                bottom: 20px;
+                right: 20px;
+            }
+            .ai-chat {
+                width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Китайские шары -->
+        <div class="chinese-lanterns">
+            <div class="lantern"></div>
+            <div class="lantern"></div>
+            <div class="lantern"></div>
+            <div class="lantern"></div>
+            <div class="lantern"></div>
+            <div class="lantern"></div>
+            <div class="lantern"></div>
+            <div class="lantern"></div>
+        </div>
+        <div class="top-bar">
+            <!-- Логотип убран из header -->
+        </div>
+    </header>
+    
+    <!-- Главный баннер -->
+    <div class="main-banner">
+        <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Восточная мебель">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <div class="banner-logo">ХУАСИН</div>
+            <h1 id="banner-title">Восточная элегантность в вашем доме</h1>
+            <p id="banner-text">Уникальная мебель и предметы интерьера с восточным колоритом</p>
+            <a href="https://www.avito.ru/user/3370e5b232a82b249ff2ec8cd75ed8f2/profile" class="banner-btn" target="_blank" id="banner-button">Наш каталог товара на Авито</a>
+        </div>
+    </div>
+    
+    <!-- О нас -->
+    <section class="about-section">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Магазин ХУАСИН">
+        </div>
+        <div class="about-text">
+            <h2 id="about-title">О магазине ХУАСИН</h2>
+            <p id="about-text1">Мы специализируемся на поставках качественной восточной мебели и предметов интерьера напрямую от производителей. Наш магазин предлагает уникальные изделия, сочетающие в себе традиционные восточные мотивы и современный дизайн.</p>
+            <p id="about-text2">Вся наша продукция изготовлена из натуральных материалов с соблюдением древних традиций мастерства. Мы тщательно отбираем каждого поставщика, чтобы гарантировать нашим клиентам только лучшее качество.</p>
+            <p id="about-text3">С 2010 года мы помогаем создавать уютные и стильные интерьеры с восточным характером.</p>
+        </div>
+    </section>
+    
+    <!-- Преимущества -->
+    <section class="features-section">
+        <div class="features-container">
+            <h2 class="features-title" id="features-title">Почему выбирают нас</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h3 id="feature1-title">Быстрая доставка</h3>
+                    <p id="feature1-text">Доставляем заказы по всей России в кратчайшие сроки</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-medal"></i></div>
+                    <h3 id="feature2-title">Гарантия качества</h3>
+                    <p id="feature2-text">Все товары проходят тщательную проверку перед отправкой</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3 id="feature3-title">Доступные цены</h3>
+                    <p id="feature3-text">Прямые поставки позволяют предлагать лучшие цены</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3 id="feature4-title">Поддержка 24/7</h3>
+                    <p id="feature4-text">Наши консультанты всегда готовы помочь</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Социальные сети и Авито -->
+    <section class="social-section">
+        <h2 id="social-title">Мы в социальных сетях и на Авито</h2>
+        <div class="social-grid">
+            <div class="social-card vk">
+                <div class="social-icon"><i class="fab fa-vk"></i></div>
+                <h3>ВКонтакте</h3>
+                <p id="social-vk-text">Следите за новинками и акциями в нашей группе</p>
+                <a href="https://vk.com/huasinblg" class="social-btn" target="_blank" id="social-vk-btn">Перейти</a>
+            </div>
+            <div class="social-card whatsapp">
+                <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
+                <h3>WhatsApp</h3>
+                <p id="social-wa-text">Быстрая связь с менеджером для консультаций</p>
+                <a href="https://chat.whatsapp.com/LtR9FQwvtpMAzSqWSbafGY" class="social-btn" target="_blank" id="social-wa-btn">Написать</a>
+            </div>
+            <div class="social-card telegram">
+                <div class="social-icon"><i class="fab fa-telegram"></i></div>
+                <h3>Telegram</h3>
+                <p id="social-tg-text">Канал с новостями и специальными предложениями</p>
+                <a href="https://t.me/+1UxEb509OEJhNjE6" class="social-btn" target="_blank" id="social-tg-btn">Подписаться</a>
+            </div>
+            <div class="social-card avito">
+                <div class="social-icon"><i class="fas fa-store"></i></div>
+                <h3>Авито</h3>
+                <p id="social-avito-text">Наши товары с быстрой доставкой по России</p>
+                <a href="https://www.avito.ru/user/3370e5b232a82b249ff2ec8cd75ed8f2/profile" class="social-btn" target="_blank" id="social-avito-btn">Посмотреть</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Контакты -->
+    <section class="contacts-section">
+        <div class="contacts-container">
+            <div class="contacts-info">
+                <h2 id="contacts-title">Контакты</h2>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <p id="contacts-address">Россия, Амурская область, г. Благовещенск, ул. Александра Кириллова, 39</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <p>+7 999 165 81 18</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <p>huasin@internet.ru</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <p id="contacts-hours">Ежедневно: 9:00 - 19:00, Без выходных</p>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1234567890abcdef1234567890abcdef&amp;source=constructor&amp;scroll=false&amp;zoom=17" frameborder="0"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ИИ ассистент -->
+    <div class="ai-assistant">
+        <div class="ai-btn" id="aiAssistantBtn">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="ai-chat" id="aiChat">
+            <div class="ai-chat-header">
+                <span id="ai-title">ХУАСИН Помощник</span>
+                <i class="fas fa-times" id="closeChat"></i>
+            </div>
+            <div class="ai-chat-body" id="aiChatBody">
+                <div class="ai-message bot" id="ai-welcome">
+                    Здравствуйте! Я ваш цифровой помощник ХУАСИН. Чем могу помочь?
+                </div>
+            </div>
+            <div class="ai-chat-footer">
+                <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Введите ваш вопрос...">
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="social-icons">
+            <a href="https://vk.com/huasinblg" target="_blank"><i class="fab fa-vk"></i></a>
+            <a href="https://chat.whatsapp.com/LtR9FQwvtpMAzSqWSbafGY" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/+1UxEb509OEJhNjE6" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.avito.ru/user/3370e5b232a82b249ff2ec8cd75ed8f2/profile" target="_blank"><i class="fas fa-store"></i></a>
+        </div>
+
+        <!-- Языковой переключатель в футере -->
+        <div class="footer-language-switcher" id="footerLanguageSwitcher">
+            <button class="footer-language-btn" id="footerLanguageBtn">
+                <img src="https://flagcdn.com/w20/ru.png" alt="RU">
+                <span>Русский</span>
+            </button>
+            <div class="footer-language-dropdown" id="footerLanguageDropdown">
+                <a href="#" class="footer-language-option" data-lang="ru">
+                    <img src="https://flagcdn.com/w20/ru.png" alt="RU">
+                    Русский
+                </a>
+                <a href="#" class="footer-language-option" data-lang="zh">
+                    <img src="https://flagcdn.com/w20/cn.png" alt="CN">
+                    中文 (Китайский)
+                </a>
+                <a href="#" class="footer-language-option" data-lang="en">
+                    <img src="https://flagcdn.com/w20/gb.png" alt="EN">
+                    English
+                </a>
+            </div>
+        </div>
+
+        <p id="footer-copyright">© 2024 ХУАСИН - Восточный магазин мебели и товаров для дома</p>
+        <p id="footer-address">Россия, Амурская область, г. Благовещенск, ул. Александра Кириллова, 39 | Телефон: +7 999 165 81 18</p>
+    </footer>
+
+    <script>
+        // ИИ ассистент
+        document.addEventListener('DOMContentLoaded', function() {
+            const aiBtn = document.getElementById('aiAssistantBtn');
+            const aiChat = document.getElementById('aiChat');
+            const closeChat = document.getElementById('closeChat');
+            const aiChatBody = document.getElementById('aiChatBody');
+            const aiChatInput = document.getElementById('aiChatInput');
+            
+            // Показываем чат при загрузке страницы
+            setTimeout(() => {
+                aiChat.style.display = 'block';
+            }, 1000);
+            
+            // Открытие/закрытие чата
+            aiBtn.addEventListener('click', function() {
+                aiChat.style.display = aiChat.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            closeChat.addEventListener('click', function() {
+                aiChat.style.display = 'none';
+            });
+            
+            // Обработка ввода сообщения
+            aiChatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && this.value.trim() !== '') {
+                    const userMessage = this.value;
+                    
+                    // Добавляем сообщение пользователя
+                    const userMsgDiv = document.createElement('div');
+                    userMsgDiv.className = 'ai-message user';
+                    userMsgDiv.textContent = userMessage;
+                    aiChatBody.appendChild(userMsgDiv);
+                    
+                    // Очищаем поле ввода
+                    this.value = '';
+                    
+                    // Прокручиваем вниз
+                    aiChatBody.scrollTop = aiChatBody.scrollHeight;
+                    
+                    // Имитируем ответ бота
+                    setTimeout(() => {
+                        let botResponse = '';
+                        
+                        if (userMessage.toLowerCase().includes('привет') || userMessage.toLowerCase().includes('здравствуйте')) {
+                            botResponse = 'Здравствуйте! Чем могу помочь?';
+                        } else if (userMessage.toLowerCase().includes('каталог') || userMessage.toLowerCase().includes('товар')) {
+                            botResponse = 'Наш каталог товаров доступен на Авито: https://www.avito.ru/user/3370e5b232a82b249ff2ec8cd75ed8f2/profile';
+                        } else if (userMessage.toLowerCase().includes('контакт') || userMessage.toLowerCase().includes('связаться')) {
+                            botResponse = 'Наши контакты: телефон +7 999 165 81 18, WhatsApp: https://chat.whatsapp.com/LtR9FQwvtpMAzSqWSbafGY';
+                        } else if (userMessage.toLowerCase().includes('доставка') || userMessage.toLowerCase().includes('оплата')) {
+                            botResponse = 'Мы осуществляем доставку по всей России. Сроки и стоимость доставки уточняйте у менеджера.';
+                        } else if (userMessage.toLowerCase().includes('стул') || userMessage.toLowerCase().includes('стулья') || 
+                                  userMessage.toLowerCase().includes('кухн') || userMessage.toLowerCase().includes('кожа')) {
+                            // Ответ по товарам
+                            botResponse = 'У нас есть кожаные стулья для кухни в ассортименте. Посмотреть можно здесь: https://www.avito.ru/user/3370e5b232a82b249ff2ec8cd75ed8f2/profile?q=%D0%BA%D1%83%D1%85%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5+%D1%81%D1%82%D1%83%D0%BB%D1%8C%D1%8F+%D0%BA%D0%BE%D0%B6%D0%B0\n\nЕсли вам нужна дополнительная информация, лучше уточнить у менеджера по WhatsApp: +7 999 165 81 18';
+                        } else {
+                            botResponse = 'Для получения информации вы можете:\n1. Посмотреть наш каталог на Авито\n2. Написать нам в WhatsApp\n3. Позвонить по телефону +7 999 165 81 18';
+                        }
+                        
+                        const botMsgDiv = document.createElement('div');
+                        botMsgDiv.className = 'ai-message bot';
+                        botMsgDiv.textContent = botResponse;
+                        aiChatBody.appendChild(botMsgDiv);
+                        
+                        // Прокручиваем вниз
+                        aiChatBody.scrollTop = aiChatBody.scrollHeight;
+                    }, 1000);
+                }
+            });
+            
+            // Языковой переключатель
+            const languageBtn = document.getElementById('footerLanguageBtn');
+            const languageDropdown = document.getElementById('footerLanguageDropdown');
+            const languageOptions = document.querySelectorAll('.footer-language-option');
+            
+            // Тексты для разных языков
+            const translations = {
+                'ru': {
+                    'banner-title': 'Восточная элегантность в вашем доме',
+                    'banner-text': 'Уникальная мебель и предметы интерьера с восточным колоритом',
+                    'banner-button': 'Наш каталог товара на Авито',
+                    'about-title': 'О магазине ХУАСИН',
+                    'about-text1': 'Мы специализируемся на поставках качественной восточной мебели и предметов интерьера напрямую от производителей. Наш магазин предлагает уникальные изделия, сочетающие в себе традиционные восточные мотивы и современный дизайн.',
+                    'about-text2': 'Вся наша продукция изготовлена из натуральных материалов с соблюдением древних традиций мастерства. Мы тщательно отбираем каждого поставщика, чтобы гарантировать нашим клиентам только лучшее качество.',
+                    'about-text3': 'С 2010 года мы помогаем создавать уютные и стильные интерьеры с восточным характером.',
+                    'features-title': 'Почему выбирают нас',
+                    'feature1-title': 'Быстрая доставка',
+                    'feature1-text': 'Доставляем заказы по всей России в кратчайшие сроки',
+                    'feature2-title': 'Гарантия качества',
+                    'feature2-text': 'Все товары проходят тщательную проверку перед отправкой',
+                    'feature3-title': 'Доступные цены',
+                    'feature3-text': 'Прямые поставки позволяют предлагать лучшие цены',
+                    'feature4-title': 'Поддержка 24/7',
+                    'feature4-text': 'Наши консультанты всегда готовы помочь',
+                    'social-title': 'Мы в социальных сетях и на Авито',
+                    'social-vk-text': 'Следите за новинками и акциями в нашей группе',
+                    'social-vk-btn': 'Перейти',
+                    'social-wa-text': 'Быстрая связь с менеджером для консультаций',
+                    'social-wa-btn': 'Написать',
+                    'social-tg-text': 'Канал с новостями и специальными предложениями',
+                    'social-tg-btn': 'Подписаться',
+                    'social-avito-text': 'Наши товары с быстрой доставкой по России',
+                    'social-avito-btn': 'Посмотреть',
+                    'contacts-title': 'Контакты',
+                    'contacts-address': 'Россия, Амурская область, г. Благовещенск, ул. Александра Кириллова, 39',
+                    'contacts-hours': 'Ежедневно: 9:00 - 19:00, Без выходных',
+                    'ai-title': 'ХУАСИН Помощник',
+                    'ai-welcome': 'Здравствуйте! Я ваш цифровой помощник ХУАСИН. Чем могу помочь?',
+                    'footer-copyright': '© 2024 ХУАСИН - Восточный магазин мебели и товаров для дома',
+                    'footer-address': 'Россия, Амурская область, г. Благовещенск, ул. Александра Кириллова, 39 | Телефон: +7 999 165 81 18'
+                },
+                'zh': {
+                    'banner-title': '东方优雅在您家中',
+                    'banner-text': '具有东方特色的独特家具和家居饰品',
+                    'banner-button': '我们在Avito上的产品目录',
+                    'about-title': '关于华鑫商店',
+                    'about-text1': '我们专门直接从制造商处供应高品质的东方家具和家居饰品。我们的商店提供结合传统东方主题和现代设计的独特产品。',
+                    'about-text2': '我们所有的产品都是用天然材料按照古老工艺传统制造的。我们精心挑选每一位供应商，以确保为客户提供最好的质量。',
+                    'about-text3': '自2010年以来，我们一直在帮助创造具有东方特色的舒适时尚的室内装饰。',
+                    'features-title': '为什么选择我们',
+                    'feature1-title': '快速送货',
+                    'feature1-text': '我们在最短的时间内将订单送达俄罗斯各地',
+                    'feature2-title': '质量保证',
+                    'feature2-text': '所有商品在发货前都经过严格检查',
+                    'feature3-title': '实惠的价格',
+                    'feature3-text': '直接供应使我们能够提供最优惠的价格',
+                    'feature4-title': '24/7支持',
+                    'feature4-text': '我们的顾问随时准备提供帮助',
+                    'social-title': '我们在社交媒体和Avito上',
+                    'social-vk-text': '在我们的群组中关注新品和促销活动',
+                    'social-vk-btn': '前往',
+                    'social-wa-text': '快速联系经理进行咨询',
+                    'social-wa-btn': '写信',
+                    'social-tg-text': '包含新闻和特别优惠的频道',
+                    'social-tg-btn': '订阅',
+                    'social-avito-text': '我们在俄罗斯提供快速送货的商品',
+                    'social-avito-btn': '查看',
+                    'contacts-title': '联系方式',
+                    'contacts-address': '俄罗斯, 阿穆尔州, 布拉戈维申斯克市, 亚历山大·基里洛瓦街39号',
+                    'contacts-hours': '每天: 9:00 - 19:00, 无休',
+                    'ai-title': '华鑫助手',
+                    'ai-welcome': '您好！我是您的数字助手华鑫。有什么可以帮您的吗？',
+                    'footer-copyright': '© 2024 华鑫 - 东方家具和家居用品商店',
+                    'footer-address': '俄罗斯, 阿穆尔州, 布拉戈维申斯克市, 亚历山大·基里洛瓦街39号 | 电话: +7 999 165 81 18'
+                },
+                'en': {
+                    'banner-title': 'Eastern elegance in your home',
+                    'banner-text': 'Unique furniture and interior items with oriental flavor',
+                    'banner-button': 'Our product catalog on Avito',
+                    'about-title': 'About HUASIN Store',
+                    'about-text1': 'We specialize in supplying high-quality oriental furniture and interior items directly from manufacturers. Our store offers unique products that combine traditional oriental motifs with modern design.',
+                    'about-text2': 'All our products are made from natural materials in compliance with ancient craft traditions. We carefully select each supplier to guarantee our customers only the best quality.',
+                    'about-text3': 'Since 2010, we have been helping to create cozy and stylish interiors with an oriental character.',
+                    'features-title': 'Why Choose Us',
+                    'feature1-title': 'Fast Delivery',
+                    'feature1-text': 'We deliver orders throughout Russia in the shortest possible time',
+                    'feature2-title': 'Quality Guarantee',
+                    'feature2-text': 'All items are thoroughly checked before shipping',
+                    'feature3-title': 'Affordable Prices',
+                    'feature3-text': 'Direct supplies allow us to offer the best prices',
+                    'feature4-title': '24/7 Support',
+                    'feature4-text': 'Our consultants are always ready to help',
+                    'social-title': 'We are on social media and Avito',
+                    'social-vk-text': 'Follow new arrivals and promotions in our group',
+                    'social-vk-btn': 'Go',
+                    'social-wa-text': 'Quick contact with a manager for consultations',
+                    'social-wa-btn': 'Write',
+                    'social-tg-text': 'Channel with news and special offers',
+                    'social-tg-btn': 'Subscribe',
+                    'social-avito-text': 'Our products with fast delivery across Russia',
+                    'social-avito-btn': 'View',
+                    'contacts-title': 'Contacts',
+                    'contacts-address': 'Russia, Amur Region, Blagoveshchensk, Aleksandra Kirillova st., 39',
+                    'contacts-hours': 'Daily: 9:00 - 19:00, No days off',
+                    'ai-title': 'HUASIN Assistant',
+                    'ai-welcome': 'Hello! I am your digital assistant HUASIN. How can I help you?',
+                    'footer-copyright': '© 2024 HUASIN - Eastern Furniture Store',
+                    'footer-address': 'Russia, Amur Region, Blagoveshchensk, Aleksandra Kirillova st., 39 | Phone: +7 999 165 81 18'
+                }
+            };
+
+            // Функция смены языка
+            function changeLanguage(lang) {
+                // Обновляем все текстовые элементы
+                for (const [key, value] of Object.entries(translations[lang])) {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        if (key === 'ai-welcome' && aiChatBody.querySelector('.bot')) {
+                            aiChatBody.querySelector('.bot').textContent = value;
+                        } else {
+                            element.textContent = value;
+                        }
+                    }
+                }
+                
+                // Обновляем кнопку языка
+                const flagSrc = {
+                    'ru': 'https://flagcdn.com/w20/ru.png',
+                    'zh': 'https://flagcdn.com/w20/cn.png',
+                    'en': 'https://flagcdn.com/w20/gb.png'
+                };
+                
+                const languageName = {
+                    'ru': 'Русский',
+                    'zh': '中文 (Китайский)',
+                    'en': 'English'
+                };
+                
+                languageBtn.innerHTML = `
+                    <img src="${flagSrc[lang]}" alt="${lang}">
+                    <span>${languageName[lang]}</span>
+                `;
+                
+                // Сохраняем выбранный язык
+                localStorage.setItem('huasinLanguage', lang);
+            }
+
+            // Открытие/закрытие меню
+            languageBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageDropdown.classList.toggle('show');
+                languageBtn.classList.toggle('active');
+            });
+
+            // Закрытие при клике вне меню
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.footer-language-switcher')) {
+                    languageDropdown.classList.remove('show');
+                    languageBtn.classList.remove('active');
+                }
+            });
+
+            // Выбор языка
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                    languageDropdown.classList.remove('show');
+                    languageBtn.classList.remove('active');
+                });
+            });
+
+            // Проверяем сохраненный язык
+            const savedLang = localStorage.getItem('huasinLanguage') || 'ru';
+            changeLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
